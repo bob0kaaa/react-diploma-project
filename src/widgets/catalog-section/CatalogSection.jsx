@@ -11,7 +11,7 @@ import {
 import Preloader from '../../shared/ui/Preloader';
 import ErrorBlock from '../../shared/ui/ErrorBlock';
 
-export default function CatalogSection({ resetSearchOnMount = false }) {
+export default function CatalogSection({ resetSearchOnMount = false, searchSlot = null }) {
     const dispatch = useDispatch();
     const {
         categories,
@@ -45,6 +45,8 @@ export default function CatalogSection({ resetSearchOnMount = false }) {
     return (
         <section className="catalog">
             <h2 className="text-center">Каталог</h2>
+
+            {searchSlot}
 
             {categoriesLoading && <Preloader />}
             {categoriesError && (

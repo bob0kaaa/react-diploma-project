@@ -1,4 +1,4 @@
-export default function CatalogPage() {
+export default function ContactsPage() {
     return (
         <main className="container">
             <div className="row">

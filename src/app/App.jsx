@@ -5,13 +5,10 @@ import CatalogPage from "../pages/catalog/CatalogPage.jsx";
 import ItemPage from "../pages/item/ItemPage.jsx";
 import CartPage from "../pages/cart/CartPage.jsx";
 import AboutPage from "../pages/about/AboutPage.jsx";
+import ContactsPage from "../pages/contacts/ContactsPage.jsx";
 import NotFoundPage from "../pages/not-found/NotFoundPage.jsx";
 import Header from "../widgets/header/Header.jsx";
 import Footer from "../widgets/footer/Footer.jsx";
-
-function ContactsPage() {
-    return null;
-}
 
 function App() {
     return (
