@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { cartRemove } from '../../app/store/reducers/cart';
@@ -12,9 +12,12 @@ export default function CartPage() {
   const cartItems = useSelector((state) => state.cart.items);
   const { loading, success, error } = useSelector((state) => state.order);
 
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState(() => localStorage.getItem('orderPhone') || '');
+  const [address, setAddress] = useState(() => localStorage.getItem('orderAddress') || '');
   const [agreement, setAgreement] = useState(false);
+
+  useEffect(() => { localStorage.setItem('orderPhone', phone); }, [phone]);
+  useEffect(() => { localStorage.setItem('orderAddress', address); }, [address]);
 
   const total = cartItems.reduce((sum, i) => sum + i.price * i.qty, 0);
 

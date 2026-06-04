@@ -23,6 +23,7 @@ export default function CatalogSection({ resetSearchOnMount = false, searchSlot 
         itemsError,
         hasMore,
         activeCategory,
+        itemsLoaded,
     } = useSelector((state) => state.catalog);
 
     useEffect(() => {
@@ -81,7 +82,7 @@ export default function CatalogSection({ resetSearchOnMount = false, searchSlot 
                 <ErrorBlock message={itemsError} onRetry={() => dispatch(loadItems())} />
             )}
 
-            {!itemsLoading && !itemsError && items.length === 0 && (
+            {itemsLoaded && !itemsLoading && !itemsError && items.length === 0 && (
                 <p className="text-center">Ничего не найдено</p>
             )}
 

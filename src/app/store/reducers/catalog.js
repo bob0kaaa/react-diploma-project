@@ -28,6 +28,7 @@ const initialState = {
     itemsMoreLoading: false,
     itemsError: null,
     hasMore: true,
+    itemsLoaded: false,
 
     activeCategory: null,
     searchQuery: '',
@@ -85,7 +86,7 @@ export const resetSearch = () => (dispatch) => {
 const catalogReducer = (state = initialState, action) => {
     switch (action.type) {
         case RESET_SEARCH:
-            return {...state, searchQuery: '', items: [], hasMore: true};
+            return {...state, searchQuery: '', items: [], hasMore: true, itemsLoaded: false};
         case CATEGORIES_REQUEST:
             return {...state, categoriesLoading: true, categoriesError: null};
         case CATEGORIES_SUCCESS:
@@ -94,16 +95,17 @@ const catalogReducer = (state = initialState, action) => {
             return {...state, categoriesLoading: false, categoriesError: action.payload};
 
         case ITEMS_REQUEST:
-            return {...state, itemsLoading: true, itemsError: null, items: []};
+            return {...state, itemsLoading: true, itemsError: null, items: [], itemsLoaded: false};
         case ITEMS_SUCCESS:
             return {
                 ...state,
                 itemsLoading: false,
+                itemsLoaded: true,
                 items: action.payload,
                 hasMore: action.payload.length === PAGE_SIZE,
             };
         case ITEMS_FAILURE:
-            return {...state, itemsLoading: false, itemsError: action.payload};
+            return {...state, itemsLoading: false, itemsLoaded: true, itemsError: action.payload};
 
         case ITEMS_MORE_REQUEST:
             return {...state, itemsMoreLoading: true};
@@ -118,9 +120,9 @@ const catalogReducer = (state = initialState, action) => {
             return {...state, itemsMoreLoading: false, itemsError: action.payload};
 
         case SET_CATEGORY:
-            return {...state, activeCategory: action.payload, items: [], hasMore: true};
+            return {...state, activeCategory: action.payload, items: [], hasMore: true, itemsLoaded: false};
         case SET_SEARCH:
-            return {...state, searchQuery: action.payload, items: [], hasMore: true};
+            return {...state, searchQuery: action.payload, items: [], hasMore: true, itemsLoaded: false};
 
         default:
             return state;
