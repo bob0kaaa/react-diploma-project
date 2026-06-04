@@ -1,12 +1,14 @@
 export default function NotFoundPage() {
     return (
-        <div className="row">
-            <div className="col">
-                <section className="top-sales">
-                    <h2 className="text-center">Страница не найдена</h2>
-                    <p className="text-center">Извините, такая страница не найдена!</p>
-                </section>
+        <main className="container">
+            <div className="row">
+                <div className="col">
+                    <section className="top-sales">
+                        <h2 className="text-center">Страница не найдена</h2>
+                        <p>Извините, такая страница не найдена!</p>
+                    </section>
+                </div>
             </div>
-        </div>
+        </main>
     );
 }
