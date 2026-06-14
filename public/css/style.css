@@ -181,9 +181,12 @@ section {
   margin-bottom: 1em;
 }
 
-.catalog-item-card .card-img-top {
-  height: 220px;
-  object-fit: contain;
+.catalog-item-card,
+.card {
+  .card-img-top {
+    height: 220px;
+    object-fit: contain;
+  }
 }
 
 .catalog-item-size {
@@ -198,7 +201,8 @@ section {
 }
 
 .catalog-search-form {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 38px;
   padding: 0 20px;
@@ -208,7 +212,8 @@ section {
   margin-bottom: 2em;
 }
 .catalog-search-form .form-control {
-  width: 100%;
+  /*width: 100%;*/
+  flex: 1 1 auto;
   height: 100%;
   color: #333333;
   border: none;
@@ -309,4 +314,19 @@ h2, .h2 {
 .btn-outline-primary:hover {
   background-color: #727e86;
   border-color: #727e86;
+}
+
+.btn-search-custom {
+    border-radius: 50px;
+    max-height: 36px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
 }

@@ -28,7 +28,7 @@ export default function CatalogPage() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
             />
-            <button className="btn btn-outline-primary" type="submit">
+            <button className="btn btn-outline-primary btn-search-custom" type="submit">
                 Найти
             </button>
         </form>
