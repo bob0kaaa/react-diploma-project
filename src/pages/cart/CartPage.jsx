@@ -18,6 +18,7 @@ export default function CartPage() {
 
   useEffect(() => { localStorage.setItem('orderPhone', phone); }, [phone]);
   useEffect(() => { localStorage.setItem('orderAddress', address); }, [address]);
+  useEffect(() => () => { dispatch(resetOrder()); }, [dispatch]);
 
   const total = cartItems.reduce((sum, i) => sum + i.price * i.qty, 0);
 
@@ -44,7 +45,6 @@ export default function CartPage() {
                 <Link
                   to="/"
                   className="btn btn-outline-primary"
-                  onClick={() => dispatch(resetOrder())}
                 >
                   На главную
                 </Link>
@@ -119,7 +119,9 @@ export default function CartPage() {
                     <input
                       className="form-control"
                       id="phone"
-                      placeholder="Ваш телефон"
+                      placeholder="+7XXXXXXXXXX"
+                      pattern="\+7\d{10}"
+                      title="Формат: +7XXXXXXXXXX"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       required

@@ -13,7 +13,7 @@ export default function CatalogPage() {
         const q = searchParams.get('q') || '';
         setInputValue(q);
         dispatch(setSearch(q));
-    }, []);
+    }, [searchParams, dispatch]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,7 +38,7 @@ export default function CatalogPage() {
         <main className="container">
             <div className="row">
                 <div className="col">
-                    <CatalogSection searchSlot={searchForm} />
+                    <CatalogSection searchSlot={searchForm} skipInitialLoad />
                 </div>
             </div>
         </main>

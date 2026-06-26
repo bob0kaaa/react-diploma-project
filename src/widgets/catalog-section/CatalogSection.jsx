@@ -11,7 +11,7 @@ import {
 import Preloader from '../../shared/ui/Preloader';
 import ErrorBlock from '../../shared/ui/ErrorBlock';
 
-export default function CatalogSection({ resetSearchOnMount = false, searchSlot = null }) {
+export default function CatalogSection({ resetSearchOnMount = false, searchSlot = null, skipInitialLoad = false }) {
     const dispatch = useDispatch();
     const {
         categories,
@@ -30,10 +30,10 @@ export default function CatalogSection({ resetSearchOnMount = false, searchSlot 
         dispatch(loadCategories());
         if (resetSearchOnMount) {
             dispatch(resetSearch());
-        } else {
+        } else if (!skipInitialLoad) {
             dispatch(loadItems());
         }
-    }, [dispatch, resetSearchOnMount]);
+    }, [dispatch, resetSearchOnMount, skipInitialLoad]);
 
     const handleCategory = (categoryId) => {
         dispatch(setCategory(categoryId));
